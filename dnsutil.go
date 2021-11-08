@@ -229,10 +229,10 @@ func checkDNSPropagation(fqdn, value string, resolvers []string) (bool, error) {
 		fqdn = updateDomainWithCName(r, fqdn)
 	}
 
-	authoritativeNss, err := lookupNameservers(fqdn, resolvers)
-	if err != nil {
-		return false, err
-	}
+	// authoritativeNss, err := lookupNameservers(fqdn, resolvers)
+	// if err != nil {
+	// 	return false, err
+	// }
 	
 	// Check the configured resolvers instead of the authoritative ones
 	return checkAuthoritativeNss(fqdn, value, resolvers)
