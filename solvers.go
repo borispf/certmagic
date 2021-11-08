@@ -331,6 +331,11 @@ func (s *DNS01Solver) Wait(ctx context.Context, challenge acme.Challenge) error 
 			return nil
 		}
 	}
+	
+	// If last error is nil then assume it worked.
+	if err == nil {
+		return nil
+	}
 
 	return fmt.Errorf("timed out waiting for record to fully propagate; verify DNS provider configuration is correct - last error: %v", err)
 }
